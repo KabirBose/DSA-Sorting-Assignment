@@ -1,5 +1,5 @@
 
-def readFile(my_file):
+def read_file(my_file):
     data = []
 
     with open(my_file) as file:
@@ -7,23 +7,25 @@ def readFile(my_file):
             data.append(line.rstrip())
     return data
 
+def create_store(data):
+    store = {
+        "ids": [],
+        "names": [],
+        "prices": [],
+        "categories": []
+    }
+
+    for i in range(len(data)):
+        store["ids"].append((data[i].split(","))[0])
+        store["names"].append((data[i].split(","))[1])
+        store["prices"].append((data[i].split(","))[2])
+        store["categories"].append((data[i].split(","))[3])
+    return store
 
 def main():
-    product_data = readFile("product_data.txt")
-    
-    ids = []
-    names = []
-    prices = []
-    categories = []
+    product_data = create_store(read_file("product_data.txt"))
 
-    for i in range(len(product_data)):
-        ids.append((product_data[i].split(","))[0])
-        names.append((product_data[i].split(","))[1])
-        prices.append((product_data[i].split(","))[2])
-        categories.append((product_data[i].split(","))[3])
-    
-    print(names)
+    print(product_data["ids"])
 
     return 0
-
 main()
