@@ -1,12 +1,28 @@
 
-def main():
-    product_data = []
+def readFile(my_file):
+    data = []
 
-    with open("product_data.txt") as file:
+    with open(my_file) as file:
         for line in file:
-            product_data.append([line.rstrip()])
+            data.append(line.rstrip())
+    return data
 
-    print(product_data)
+
+def main():
+    product_data = readFile("product_data.txt")
+    
+    ids = []
+    names = []
+    prices = []
+    categories = []
+
+    for i in range(len(product_data)):
+        ids.append((product_data[i].split(","))[0])
+        names.append((product_data[i].split(","))[1])
+        prices.append((product_data[i].split(","))[2])
+        categories.append((product_data[i].split(","))[3])
+    
+    print(names)
 
     return 0
 
