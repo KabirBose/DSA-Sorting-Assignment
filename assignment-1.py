@@ -33,15 +33,18 @@ def main():
                 print(f"{products[i][0]}, {products[i][1]}, {products[i][2]}, {products[i][3]}")
     
     def delete(id):
+        prod_id = 0
         for i in range(len(products)):
             if int(products[i][0]) == int(id):
-                products.pop(i)
+                prod_id = i
+
+        products.pop(prod_id)
         print(f"Product {id} was successfully deleted")
 
-    # create(39103, "Lobster", 63, "Food")
+    delete(44574)
+    create(39103, "Lobster LBSTR", 63, "Food")
     search_by_id(44574)
     search_by_name("Knife Set ASRHX")
-    delete(44574)
     update(69525, 10293, "Caviar", "102", "Food")
 
     print(products)
