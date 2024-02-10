@@ -15,18 +15,36 @@ def main():
 
     def create(id, name, price, category):
         products.append([id, name, price, category])
+    
+    def update(id, n_id, name, price, category):
+        for i in range(len(products)):
+            if int(products[i][0]) == int(id):
+                products[i] = [n_id, name, price, category]
+        print(f"Product was successfully updated")
 
     def search_by_id(id):
         for i in range(len(products)):
             if int(products[i][0]) == int(id):
-                print(f"{products[i][0]},{products[i][1]},{products[i][2]},{products[i][3]}")
+                print(f"{products[i][0]}, {products[i][1]}, {products[i][2]}, {products[i][3]}")
 
     def search_by_name(name):
         for i in range(len(products)):
-            if (products[i][1]).strip() == name:
-                print(products[i][0], products[i][1], products[i][2], products[i][3])
+            if (products[i][1]).strip().lower() == name.lower():
+                print(f"{products[i][0]}, {products[i][1]}, {products[i][2]}, {products[i][3]}")
+    
+    def delete(id):
+        for i in range(len(products)):
+            if int(products[i][0]) == int(id):
+                products.pop(i)
+        print(f"Product {id} was successfully deleted")
 
+    # create(39103, "Lobster", 63, "Food")
     search_by_id(44574)
-    # print(products)
+    search_by_name("Knife Set ASRHX")
+    delete(44574)
+    update(69525, 10293, "Caviar", "102", "Food")
+
+    print(products)
+
     return 0
 main()
