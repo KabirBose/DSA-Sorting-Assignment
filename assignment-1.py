@@ -43,10 +43,10 @@ def main():
         products.append([id, name, price, category])
     
     # function to update items in the array
-    def update(id, n_id, name, price, category):
+    def update(id, name, price, category):
         for i in range(len(products)):
             if int(products[i][0]) == int(id):
-                products[i] = [n_id, name, price, category]
+                products[i] = [id, name, price, category]
         print(f"Product was successfully updated")
 
     # function that searches for items by id
@@ -72,12 +72,15 @@ def main():
         print(f"Product {id} was successfully deleted")
 
     # examples of all the function calls being used
-    print(insertion_sort(products))
-    delete(44574)
-    create(39103, "Lobster LBSTR", 63, "Food")
-    search_by_id(44574)
-    search_by_name("Knife Set ASRHX")
-    update(69525, 10293, "Caviar", "102", "Food")
+    # print(insertion_sort(products))
+    # delete(44574)
+    # create(39103, "Lobster LBSTR", 63, "Food")
+    # search_by_id(44574)
+    # search_by_name("Knife Set ASRHX")
+    update(57353, "Caviar CVRNB", "102", "Food")
+
+    for i in range(len(products)):
+        print(products[i])
 
     return 0
 main()
