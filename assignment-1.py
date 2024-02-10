@@ -16,10 +16,10 @@ def create_store(data):
     }
 
     for i in range(len(data)):
-        store["ids"].append((data[i].split(","))[0])
-        store["names"].append((data[i].split(","))[1])
-        store["prices"].append((data[i].split(","))[2])
-        store["categories"].append((data[i].split(","))[3])
+        store["ids"].append(((data[i].split(","))[0]).strip())
+        store["names"].append(((data[i].split(","))[1]).strip())
+        store["prices"].append(((data[i].split(","))[2]).strip())
+        store["categories"].append(((data[i].split(","))[3]).strip())
     return store
 
 def main():
@@ -41,7 +41,15 @@ def main():
             else:
                 print("This ID does not exist!")
 
-    print(product_data["names"])
+    def search_product(id, name):
+        for i in range(len(product_data["ids"])):
+            if (product_data["ids"])[i] == id or (product_data["names"])[i] == name:
+                print((product_data["ids"])[i], (product_data["names"])[i], (product_data["prices"])[i], (product_data["categories"])[i])
+            else:
+                print("This product does not exist!")
+
+    search_product(0, "Mystery MGSPG")
+    # print(product_data["names"])
 
     return 0
 main()
